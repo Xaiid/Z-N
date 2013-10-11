@@ -11,7 +11,9 @@ var ZombieWorld = {
   
 
   Initialize: function(){
-    ZombieWorld.socket = io.connect();
+
+    ZombieWorld.socketController.init();
+
     ZombieWorld.gameController.getConfiguration(function(){
       //Crafty init
       var width = ZombieWorld.Land.map.width * ZombieWorld.Land.map.tile.width;
@@ -20,7 +22,6 @@ var ZombieWorld = {
       Crafty.init(width,height);
 
       ZombieWorld.gameController.generateLevel();
-      ZombieWorld.gameController.loadPlayers();
     });
   }
 
