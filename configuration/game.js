@@ -9,11 +9,11 @@ var Levels = {
 };
 
 var Configuration = {
-  width: 0,
-  height: 0,
+  width: 55,
+  height: 27,
   title: {
-    width: 0,
-    heigth: 0
+    width: 20,
+    heigth: 20
   }
 };
 
