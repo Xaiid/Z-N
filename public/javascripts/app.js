@@ -7,7 +7,8 @@ var ZombieWorld = {
   currentPlayer: null,
   Players: {},
   Zombies: {},
-  // Scenes: {},
+  Sprites: {},
+  
 
   Initialize: function(){
     ZombieWorld.socket = io.connect();
@@ -19,6 +20,7 @@ var ZombieWorld = {
       Crafty.init(width,height);
 
       ZombieWorld.gameController.generateLevel();
+      ZombieWorld.gameController.loadPlayers();
     });
   }
 

@@ -19,7 +19,7 @@ var Configuration = {
 
 //Players
 var player1 = {
-  speed: 0
+  speed: 2
 };
 var player2 = {
   speed: 0
