@@ -1,12 +1,7 @@
 ZombieWorld.Components.socket = Crafty.c('Socket', {
-  socket: ZombieWorld.socket,
 
-  emit: function(){
-
-  },
-
-  on: function(){
-
+  emit: function(name, data){
+    ZombieWorld.socket.emit(name, data);
   }
 
 });

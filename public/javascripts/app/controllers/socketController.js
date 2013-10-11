@@ -17,6 +17,10 @@ ZombieWorld.socketController = {
     ZombieWorld.socket.emit('Player list', myPlayer);
     ZombieWorld.socket.on('Load players', ZombieWorld.gameController.setPlayers);
 
+    ZombieWorld.socket.on('Move player', function(user){
+      console.log(user);
+    });
+
     ZombieWorld.socket.on('Error', function(error){
       alert(error);
     });
