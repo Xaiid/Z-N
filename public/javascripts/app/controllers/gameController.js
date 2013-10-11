@@ -9,6 +9,7 @@ ZombieWorld.gameController = {
 
   generateLevel: function(){
     //Ask server for level
+    Crafty.background('rgb(141,131,121)');
   }
 
 };
