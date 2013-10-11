@@ -30,7 +30,7 @@ ZombieWorld.gameController = {
 
   generateLevel: function(cb){
     //Ask server for level
-    Crafty.background("url('/images/daftpunk.jpg')");
+    Crafty.background("url('/images/level 1.png')");
     drawGrid(ZombieWorld.Land.map.Grid, function(){
       console.log('Map drawn');
       return cb();
@@ -65,32 +65,29 @@ ZombieWorld.gameController = {
   loadTeam: function(){
     _.each(ZombieWorld.players, function(player){
       player.Entity = Crafty.e('Player, ' + player.type)
-          .attr({
-            x: player.x,
-            y: player.y
-          })
-          .requires('Keyboard')
-          .animate("walk_left", 0 , 1,  2)
-          .animate("walk_right", 0 , 2 ,2)
-          .animate("walk_up", 0,  3, 2)
-          .animate("walk_down", 0, 0 , 2)
-          .fourway(player.speed)
-          .bind('NewDirection', function(data) {
-            if (data.x > 0) {
-              this.animate('walk_right', player.speed, -1);
-            } else if (data.x < 0) {
-              this.animate('walk_left', player.speed, -1);
-            } else if (data.y > 0) {
-              this.animate('walk_down', player.speed, -1);
-            } else if (data.y < 0) {
-              this.animate('walk_up', player.speed, -1);
-            } else {
-              this.stop();
-            }
-          })
-          .onHit('Next', function(){
-            console.log('Next level');
-          });
+      .attr({
+        x: player.x,
+        y: player.y
+      })
+      .requires('Keyboard')
+      .animate("walk_left", 0 , 1,  2)
+      .animate("walk_right", 0 , 2 ,2)
+      .animate("walk_up", 0,  3, 2)
+      .animate("walk_down", 0, 0 , 2)
+      .fourway(player.speed)
+      .bind('NewDirection', function(data) {
+        if (data.x > 0) {
+          this.animate('walk_right', player.speed, -1);
+        } else if (data.x < 0) {
+          this.animate('walk_left', player.speed, -1);
+        } else if (data.y > 0) {
+          this.animate('walk_down', player.speed, -1);
+        } else if (data.y < 0) {
+          this.animate('walk_up', player.speed, -1);
+        } else {
+          this.stop();
+        }
+      })
     });
   },
   
@@ -121,6 +118,9 @@ ZombieWorld.gameController = {
         } else {
           this.stop();
         }
+      })
+      .onHit('Next', function(){
+        console.log('Next level');
       });
     }
   }
@@ -131,43 +131,25 @@ var drawGrid = function(grid, cb){
   _.each(grid, function(x, xIndex){
     _.each(x, function(y, yIndex){
 
-      var coordinates = {
+      var properties = {
         x: xIndex * ZombieWorld.Land.map.tile.width,
-        y: yIndex * ZombieWorld.Land.map.tile.height
+        y: yIndex * ZombieWorld.Land.map.tile.height,
+        w: ZombieWorld.Land.map.tile.width,
+        h: ZombieWorld.Land.map.tile.height 
       };
 
       switch(grid[xIndex][yIndex]){
         case 0:
-          Crafty.e('Free').attr({
-            x: coordinates.x,
-            y: coordinates.y,
-            w: ZombieWorld.Land.map.tile.width,
-            h: ZombieWorld.Land.map.tile.height 
-          });
+          Crafty.e('Free').attr(properties);
           break;
         case 1:
-          Crafty.e('Limit').attr({
-            x: coordinates.x,
-            y: coordinates.y,
-            w: ZombieWorld.Land.map.tile.width,
-            h: ZombieWorld.Land.map.tile.height 
-          });
+          Crafty.e('Limit').attr(properties);
           break;
         case 2:
-          Crafty.e('Barrel').attr({
-            x: coordinates.x,
-            y: coordinates.y,
-            w: ZombieWorld.Land.map.tile.width,
-            h: ZombieWorld.Land.map.tile.height 
-          });
+          Crafty.e('Barrel').attr(properties);
           break;
         case 4:
-          Crafty.e('Next').attr({
-            x: coordinates.x,
-            y: coordinates.y,
-            w: ZombieWorld.Land.map.tile.width,
-            h: ZombieWorld.Land.map.tile.height 
-          });
+          Crafty.e('Next').attr(properties);
           break;
       }
     });
