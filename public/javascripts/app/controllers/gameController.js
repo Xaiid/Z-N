@@ -45,18 +45,27 @@ ZombieWorld.gameController = {
       return alert('You are not on the server');
     }
 
-    ZombieWorld.currentPlayer = players[myPlayer.username];
-    ZombieWorld.players = players;
+    _.each(players, function(player){
+      if(player.username === myPlayer.username){
+        //Set up my player
+        ZombieWorld.currentPlayer = players[myPlayer.username];
+      }else{
+        //Rest of the players
+        ZombieWorld.players[player.username] = player;
+      }
+    });
+
   },
 
 
   loadPlayers: function(){
-    var players = ZombieWorld.players;
+    ZombieWorld.gameController.loadTeam();
+    ZombieWorld.gameController.myPlayer();
+  },
 
-    _.each(players, function(player){
-      console.log(player);
-
-      Crafty.e('Player, ' + player.type)
+  loadTeam: function(){
+    _.each(ZombieWorld.players, function(player){
+      player.Entity = Crafty.e('Player, ' + player.type)
           .attr({
             x: player.x,
             y: player.y
@@ -81,7 +90,34 @@ ZombieWorld.gameController = {
             }
           });
     });
-
+  },
+  
+  myPlayer: function(){
+    var player = ZombieWorld.currentPlayer;
+    player.Entity = Crafty.e('Player, ' + player.type)
+          .attr({
+            x: player.x,
+            y: player.y
+          })
+          .requires('Keyboard')
+          .animate("walk_left", 0 , 1,  2)
+          .animate("walk_right", 0 , 2 ,2)
+          .animate("walk_up", 0,  3, 2)
+          .animate("walk_down", 0, 0 , 2)
+          .fourway(player.speed)
+          .bind('NewDirection', function(data) {
+            if (data.x > 0) {
+              this.animate('walk_right', player.speed, -1);
+            } else if (data.x < 0) {
+              this.animate('walk_left', player.speed, -1);
+            } else if (data.y > 0) {
+              this.animate('walk_down', player.speed, -1);
+            } else if (data.y < 0) {
+              this.animate('walk_up', player.speed, -1);
+            } else {
+              this.stop();
+            }
+          });
   }
 
 };
