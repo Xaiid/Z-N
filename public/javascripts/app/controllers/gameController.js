@@ -97,22 +97,28 @@ var drawGrid = function(grid, cb){
 
       switch(grid[xIndex][yIndex]){
         case 0:
+          Crafty.e('Free').attr({
+            x: coordinates.x,
+            y: coordinates.y,
+            w: ZombieWorld.Land.map.tile.width,
+            h: ZombieWorld.Land.map.tile.height 
+          });
           break;
         case 1:
           Crafty.e('Limit').attr({
-          x: coordinates.x,
-          y: coordinates.y,
-          w: ZombieWorld.Land.map.tile.width,
-          h: ZombieWorld.Land.map.tile.height 
-        });
+            x: coordinates.x,
+            y: coordinates.y,
+            w: ZombieWorld.Land.map.tile.width,
+            h: ZombieWorld.Land.map.tile.height 
+          });
           break;
         case 2:
           Crafty.e('Barrel').attr({
-          x: coordinates.x,
-          y: coordinates.y,
-          w: ZombieWorld.Land.map.tile.width,
-          h: ZombieWorld.Land.map.tile.height 
-        });
+            x: coordinates.x,
+            y: coordinates.y,
+            w: ZombieWorld.Land.map.tile.width,
+            h: ZombieWorld.Land.map.tile.height 
+          });
           break;
       }
     });
