@@ -17,14 +17,50 @@ var Configuration = {
   }
 };
 
+//Players
+var player1 = {
+  speed: 0
+};
+var player2 = {
+  speed: 0
+};
+var player3 = {
+  speed: 0
+};
+
+//Zombies
+var zombie1 = {
+  speed: 0
+};
+var zombie2 = {
+  speed: 0
+};
+var zombie3 = {
+  speed: 0
+};
+
 //Send map configuration
 module.exports.map = function(level){
   return{
+
     map: {
       Grid: Levels[level],
       width: Configuration.width,
       heigth: Configuration.heigth,
       title: Configuration.title
+    },
+
+    players: {
+      player1: player1,
+      player2: player2,
+      player3: player3
+    },
+
+    zombies: {
+      zombie1: zombie1,
+      zombie2: zombie2,
+      zombie3: zombie3
     }
+
   };
 };
