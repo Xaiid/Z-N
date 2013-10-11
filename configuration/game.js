@@ -64,3 +64,5 @@ module.exports.map = function(level){
 
   };
 };
+
+module.exports.player1 = player1;
