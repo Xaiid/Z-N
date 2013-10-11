@@ -9,7 +9,6 @@ var ZombieWorld = {
   Zombies: {},
   Sprites: {},
   
-
   Initialize: function(){
 
     ZombieWorld.socketController.init();
