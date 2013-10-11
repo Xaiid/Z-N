@@ -13,7 +13,7 @@ var Configuration = {
   height: 27,
   title: {
     width: 20,
-    heigth: 20
+    height: 20
   }
 };
 
@@ -46,7 +46,7 @@ module.exports.map = function(level){
     map: {
       Grid: Levels[level],
       width: Configuration.width,
-      heigth: Configuration.height,
+      height: Configuration.height,
       title: Configuration.title
     },
 
