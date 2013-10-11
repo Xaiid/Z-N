@@ -1,8 +1,7 @@
+var pagesController = require('../controllers/pages_controller');
 
-/*
- * GET home page.
- */
-
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+module.exports = function(app){
+  app.get('/', pagesController.index.bind(pagesController));
+  app.get('/signup', pagesController.signup.bind(pagesController));
+  app.get('/game', pagesController.game.bind(pagesController));
 };
