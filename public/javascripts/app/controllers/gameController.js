@@ -12,23 +12,46 @@ ZombieWorld.gameController = {
 
   getConfiguration: function(cb){
     var self = this;
-    $.get('/configuration').done(function(configuration){
-      ZombieWorld.Land = configuration;
-      self.loadSprites();
-      return cb();
-    });
+
+    var timer = setInterval(function(){
+      //Wait for level of current player
+      if(ZombieWorld.currentPlayer){ 
+        clearInterval(timer); 
+        var level = ZombieWorld.currentPlayer.level;
+        $.get('/configuration?level='+level).done(function(configuration){
+          ZombieWorld.Land = configuration;
+          self.loadSprites();
+          return cb();
+        });
+      }
+    }, 200);
+
+
   },
 
-  generateLevel: function(){
+  generateLevel: function(cb){
     //Ask server for level
     Crafty.background('rgb(141,131,121)');
     drawGrid(ZombieWorld.Land.map.Grid, function(){
       console.log('Map drawn');
+      return cb();
     });
   },
 
+  setPlayers: function(players){
+    var myPlayer = JSON.parse(localStorage.getItem('Player'));
 
-  loadPlayers: function(players){
+    if(!players[myPlayer.username]){
+      return alert('You are not on the server');
+    }
+
+    ZombieWorld.currentPlayer = players[myPlayer.username];
+    ZombieWorld.players = players;
+  },
+
+
+  loadPlayers: function(){
+    var players = ZombieWorld.players;
 
     _.each(players, function(player){
       console.log(player);

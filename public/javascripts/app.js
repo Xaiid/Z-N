@@ -20,7 +20,9 @@ var ZombieWorld = {
 
       Crafty.init(width,height);
 
-      ZombieWorld.gameController.generateLevel();
+      ZombieWorld.gameController.generateLevel(function(){
+        ZombieWorld.gameController.loadPlayers();
+      });
     });
   }
 
