@@ -79,6 +79,7 @@ ZombieWorld.gameController = {
   loadPlayers: function(){
     ZombieWorld.gameController.loadTeam();
     ZombieWorld.gameController.myPlayer();
+    ZombieWorld.gameController.createZombies();
   },
 
   loadTeam: function(){
@@ -149,6 +150,20 @@ ZombieWorld.gameController = {
         console.log('Next level');
       });
     }
+  },
+
+  createZombies: function(){
+    console.log("creating zombieees");
+    _.each(ZombieWorld.Players, function(player){
+
+      Crafty.e('Zombie')
+          .attr({
+            x: 45,
+            y: 45,
+            w: ZombieWorld.Land.map.tile.width,
+            h: ZombieWorld.Land.map.tile.height 
+          });
+    });
   }
 
 };
