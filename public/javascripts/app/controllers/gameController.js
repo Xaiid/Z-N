@@ -50,7 +50,7 @@ ZombieWorld.gameController = {
         ZombieWorld.currentPlayer = players[myPlayer.username];
       }else{
         //Rest of the players
-        ZombieWorld.players[player.username] = player;
+        ZombieWorld.Players[player.username] = player;
       }
     });
 
