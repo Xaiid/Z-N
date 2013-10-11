@@ -11,7 +11,7 @@ var Levels = {
 var Configuration = {
   width: 52,
   height: 27,
-  title: {
+  tile: {
     width: 20,
     height: 20
   }
@@ -47,7 +47,7 @@ module.exports.map = function(level){
       Grid: Levels[level],
       width: Configuration.width,
       height: Configuration.height,
-      title: Configuration.title
+      tile: Configuration.tile
     },
 
     players: {

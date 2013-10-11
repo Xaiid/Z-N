@@ -14,8 +14,8 @@ var ZombieWorld = {
     ZombieWorld.socket = io.connect();
     ZombieWorld.gameController.getConfiguration(function(){
       //Crafty init
-      var width = ZombieWorld.Land.map.width * ZombieWorld.Land.map.title.width;
-      var height = ZombieWorld.Land.map.height* ZombieWorld.Land.map.title.height;
+      var width = ZombieWorld.Land.map.width * ZombieWorld.Land.map.tile.width;
+      var height = ZombieWorld.Land.map.height* ZombieWorld.Land.map.tile.height;
 
       Crafty.init(width,height);
 
