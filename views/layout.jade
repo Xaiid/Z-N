@@ -3,5 +3,12 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/lib/jquery.min.js')
+    script(src='/javascripts/lib/underscore.min.js')
+    script(src='/javascripts/lib/crafty.js')
+
+    script(src='/javascripts/app.js')
   body
     block content
