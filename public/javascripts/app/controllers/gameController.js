@@ -31,7 +31,7 @@ ZombieWorld.gameController = {
 
   generateLevel: function(cb){
     //Ask server for level
-    Crafty.background('rgb(141,131,121)');
+    Crafty.background("url('/images/daftpunk.jpg')");
     drawGrid(ZombieWorld.Land.map.Grid, function(){
       console.log('Map drawn');
       return cb();
@@ -88,6 +88,9 @@ ZombieWorld.gameController = {
             } else {
               this.stop();
             }
+          })
+          .onHit('Next', function(){
+            console.log('Next level');
           });
     });
   },
@@ -150,6 +153,14 @@ var drawGrid = function(grid, cb){
           break;
         case 2:
           Crafty.e('Barrel').attr({
+            x: coordinates.x,
+            y: coordinates.y,
+            w: ZombieWorld.Land.map.tile.width,
+            h: ZombieWorld.Land.map.tile.height 
+          });
+          break;
+        case 4:
+          Crafty.e('Next').attr({
             x: coordinates.x,
             y: coordinates.y,
             w: ZombieWorld.Land.map.tile.width,
