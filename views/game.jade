@@ -3,4 +3,9 @@ extends layout
 block content
   script(src='/javascripts/app/controllers/gameController.js')
 
+  script
+    $(function(){
+      ZombieWorld.Initialize();
+    });
+
   p Run for your life B*TCH

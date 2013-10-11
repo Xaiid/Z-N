@@ -1,10 +1,14 @@
-ZombieWorld.gameController = function(){
-  var getConfiguration = $.get('/configuration');
+ZombieWorld.gameController = {
 
-  getConfiguration.done(function(configuration){
-    ZombieWorld.Land = configuration;
-  });
+  getConfiguration: function(cb){
+    $.get('/configuration').done(function(configuration){
+      ZombieWorld.Land = configuration;
+      return cb();
+    });
+  },
+
+  generateLevel: function(){
+    //Ask server for level
+  }
 
 };
-
-ZombieWorld.gameController();

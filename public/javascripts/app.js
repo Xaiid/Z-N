@@ -7,9 +7,13 @@ var ZombieWorld = {
   currentPlayer: null,
   Players: {},
   Zombies: {},
-  Scenes: {},
+  // Scenes: {},
 
   Initialize: function(){
+    ZombieWorld.gameController.getConfiguration(function(){
+      //Crafty init
+    });
   }
 
 };
+
