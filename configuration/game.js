@@ -9,7 +9,7 @@ var Levels = {
 };
 
 var Configuration = {
-  width: 55,
+  width: 52,
   height: 27,
   title: {
     width: 20,
