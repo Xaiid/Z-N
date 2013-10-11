@@ -1,1 +1,1 @@
-module.exports.room = [];
+module.exports = [];

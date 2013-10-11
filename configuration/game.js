@@ -1,6 +1,6 @@
-var Grid1 = require('../grids/room');
-var Grid2 = require('../grids/room');
-var Grid3 = require('../grids/room');
+var Grid1 = require('../grids/room1');
+var Grid2 = require('../grids/room2');
+var Grid3 = require('../grids/room3');
 
 var Levels = {
   1: Grid1,
@@ -46,7 +46,7 @@ module.exports.map = function(level){
     map: {
       Grid: Levels[level],
       width: Configuration.width,
-      heigth: Configuration.heigth,
+      heigth: Configuration.height,
       title: Configuration.title
     },
 
