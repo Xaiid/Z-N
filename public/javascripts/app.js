@@ -10,6 +10,7 @@ var ZombieWorld = {
   // Scenes: {},
 
   Initialize: function(){
+    ZombieWorld.socket = io.connect();
     ZombieWorld.gameController.getConfiguration(function(){
       //Crafty init
     });
