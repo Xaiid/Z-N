@@ -1,3 +1,5 @@
+@import url(../css/bootstrap.css);
+@import url(../css/bootstrap-theme.css);
 @import url(../css/fonts.css);
 /* line 17, ../../../../../.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
@@ -64,14 +66,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 5, ../sass/style.sass */
+/* line 7, ../sass/style.sass */
 body {
-  padding: 50px;
   font: 14px "mine", Helvetica, Arial, sans-serif;
-  background: red;
+  background: #302c28;
 }
 
-/* line 10, ../sass/style.sass */
+/* line 11, ../sass/style.sass */
 a {
   color: #00b7ff;
 }

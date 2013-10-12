@@ -22,4 +22,24 @@ html
     script(src='/javascripts/app/components/zombie.js')
     script(src='/javascripts/app/components/bullet.js')
   body
+    header
+    nav.navbar.navbar-inverse(role="navigation")
+      .navbar-header
+        button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target=".navbar-ex8-collapse")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand#title(href="/")
+          img(src="/images/game-logo.png")
+
+      .navbar-collapse.navbar-ex8-collapse.collapse.col-md-6
+        ul.nav.navbar-nav
+          li
+            a(href="/") Home
+          li
+            a(href="/login") Login
+          li
+            a(href="/game") Game
+    
     block content
