@@ -2,7 +2,6 @@ ZombieWorld.socketController = {
   init: function(){
     ZombieWorld.socket = io.connect();
     var myPlayer = JSON.parse(localStorage.getItem('Player'));
-    console.log(myPlayer);
 
     if(!myPlayer){ 
       alert('Wooow!, you need a player'); 
