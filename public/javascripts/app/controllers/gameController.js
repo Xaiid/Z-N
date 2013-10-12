@@ -200,13 +200,13 @@ ZombieWorld.gameController = {
     }
   },
 
-  createZombies: function(level){
+  createZombies: function(level, type){
       for(var i=0; i < level + 1;  i++){
         var name = _.uniqueId('zombie');
         ZombieWorld.Zombies[name] = {
           level: level,
           name: name,
-          entity: Crafty.e('Zombie, ' + 'zombie1')
+          entity: Crafty.e('Zombie, ' + 'zombie' + type)
           .attr({
             x: 160,
             y: 160 + 40 * i,
