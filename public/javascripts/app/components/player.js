@@ -51,7 +51,6 @@ ZombieWorld.Components.player = Crafty.c('Player', {
         var zombie = _.findWhere(ZombieWorld.Zombies, {entity: arg[0].obj});
         zombie.entity.__life -= hit;
         if(zombie.entity.__life === 0){
-          delete ZombieWorld.Zombies[zombie.name];
           ZombieWorld.socket.emit('Kill Zombie', {name: zombie.name, level: zombie.level});
           zombie.entity.destroy();
         }
