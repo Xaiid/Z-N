@@ -59,6 +59,8 @@ ZombieWorld.gameController = {
   },
 
   newPlayer: function(player){
+    
+    //TODO [partial bug] WAIT FOR LAND!!!
     ZombieWorld.Players[player.username] = player;
     console.log(player.type);
 
@@ -116,13 +118,13 @@ ZombieWorld.gameController = {
       .bind('NewDirection', function(data) {
         this.stop();
         if (data.x > 0) {
-          this.animate('walk_right', 10, -1);
+          this.animate('walk_right', 20, -1);
         } else if (data.x < 0) {
-          this.animate('walk_left', 10, -1);
+          this.animate('walk_left', 20, -1);
         } else if (data.y > 0) {
-          this.animate('walk_down', 10, -1);
+          this.animate('walk_down', 20, -1);
         } else if (data.y < 0) {
-          this.animate('walk_up', 10, -1);
+          this.animate('walk_up', 20, -1);
         } else {
           this.stop();
         }
