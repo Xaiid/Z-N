@@ -38,7 +38,6 @@ ZombieWorld.gameController = {
   },
 
   setPlayers: function(players){
-    console.log(players);
     var myPlayer = JSON.parse(localStorage.getItem('Player'));
 
     if(!players[myPlayer.username]){
@@ -54,9 +53,23 @@ ZombieWorld.gameController = {
         ZombieWorld.Players[player.username] = player;
       }
     });
-
   },
 
+  newPlayer: function(player){
+    ZombieWorld.Players[player.username] = player;
+
+    ZombieWorld.Players[player.username].Entity = Crafty.e('Player, ' + player.type)
+        .attr({
+          x: player.x,
+          y: player.y
+        })
+        .requires('Keyboard')
+        .animate("walk_left", 0 , 1,  2)
+        .animate("walk_right", 0 , 2 ,2)
+        .animate("walk_up", 0,  3, 2)
+        .animate("walk_down", 0, 0 , 2);
+      
+  },
 
   loadPlayers: function(){
     ZombieWorld.gameController.loadTeam();
@@ -64,9 +77,8 @@ ZombieWorld.gameController = {
   },
 
   loadTeam: function(){
-    _.each(ZombieWorld.players, function(player){
-      console.log('TEAM: ', player);
-      if(!player.zombieController){
+    _.each(ZombieWorld.Players, function(player){
+      if(!player.zombieController && !player.Entity){
         player.Entity = Crafty.e('Player, ' + player.type)
         .attr({
           x: player.x,
