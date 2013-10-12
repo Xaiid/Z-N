@@ -11,7 +11,7 @@ ZombieWorld.gameController = {
           player2: [0,0]
         }),
 
-        players3: Crafty.sprite(40, "/images/player_2.png", {
+        players3: Crafty.sprite(40, "/images/player_3.png", {
           player3: [0,0]
         }),
 
