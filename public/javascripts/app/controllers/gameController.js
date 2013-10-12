@@ -108,20 +108,21 @@ ZombieWorld.gameController = {
         y: player.y
       })
       .requires('Keyboard')
-      .animate("walk_left", 0 , 1,  2)
-      .animate("walk_right", 0 , 2 ,2)
-      .animate("walk_up", 0,  3, 2)
-      .animate("walk_down", 0, 0 , 2)
+      .animate("walk_left", 0 , 1,  3)
+      .animate("walk_right", 0 , 2 ,3)
+      .animate("walk_up", 0,  3, 3)
+      .animate("walk_down", 0, 0 , 3)
       .fourway(player.speed)
       .bind('NewDirection', function(data) {
+        this.stop();
         if (data.x > 0) {
-          this.animate('walk_right', player.speed, -1);
+          this.animate('walk_right', 10, -1);
         } else if (data.x < 0) {
-          this.animate('walk_left', player.speed, -1);
+          this.animate('walk_left', 10, -1);
         } else if (data.y > 0) {
-          this.animate('walk_down', player.speed, -1);
+          this.animate('walk_down', 10, -1);
         } else if (data.y < 0) {
-          this.animate('walk_up', player.speed, -1);
+          this.animate('walk_up', 10, -1);
         } else {
           this.stop();
         }
@@ -136,11 +137,6 @@ ZombieWorld.gameController = {
         } else if(this.isDown("DOWN_ARROW")) {
           this.emit('Move player', {x: this.x, y: this.y, to: "DOWN_ARROW"});
         }
-
-        if(this.isDown("SPACE")){
-          this.bullet();
-        }
-
       })
       .onHit('Solid', function(){
         console.log('here');

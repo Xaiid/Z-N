@@ -29,22 +29,22 @@ ZombieWorld.socketController = {
 
       if(user.to === "LEFT_ARROW") {
         if(!Player.isPlaying("walk_left")){
-          Player.stop().animate("walk_left", -1);
+          Player.stop().animate("walk_left", 10, 1);
         }
 
       } else if(user.to === "RIGHT_ARROW") {
         if(!Player.isPlaying("walk_right")){
-          Player.stop().animate("walk_right", -1);
+          Player.stop().animate("walk_right",10, 1);
         }
 
       } else if(user.to === "UP_ARROW") {
         if(!Player.isPlaying("walk_up")){
-          Player.stop().animate("walk_up", -1);
+          Player.stop().animate("walk_up",10, 1);
         }
 
       } else if(user.to === "DOWN_ARROW") {
         if(!Player.isPlaying("walk_down")){
-          Player.stop().animate("walk_down", -1);
+          Player.stop().animate("walk_down",10, 1);
         }
       }
 
