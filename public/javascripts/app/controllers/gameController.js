@@ -157,16 +157,15 @@ ZombieWorld.gameController = {
   },
 
   createZombies: function(){
-    console.log("creating zombieees");
     _.each(ZombieWorld.Players, function(player){
 
-      Crafty.e('Zombie, ' + 'zombie1')
+      for(var i=0; i < player.level;  i++){
+        ZombieWorld.Zombies[_.uniqueId('zombie')] = Crafty.e('Zombie, ' + 'zombie1')
           .attr({
-            x: 45,
-            y: 45,
-            w: ZombieWorld.Land.map.tile.width,
-            h: ZombieWorld.Land.map.tile.height 
+            x: 40,
+            y: 40 + 40 * i,
           });
+      }
     });
   }
 
