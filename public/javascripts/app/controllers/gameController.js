@@ -137,14 +137,36 @@ ZombieWorld.gameController = {
       })
       .bind("EnterFrame", function(e) {
         if(this.isDown("LEFT_ARROW")) {
+          this.__pos = 'left';
+          this.__frame = 1;
           this.emit('Move player', {x: this.x, y: this.y, to: "LEFT_ARROW", username: player.username});
         } else if(this.isDown("RIGHT_ARROW")) {
+          this.__pos = 'right';
+          this.__frame = 2;
           this.emit('Move player', {x: this.x, y: this.y, to: "RIGHT_ARROW", username: player.username});
         } else if(this.isDown("UP_ARROW")) {
+          this.__pos = 'up';
+          this.__frame = 3;
           this.emit('Move player', {x: this.x, y: this.y, to: "UP_ARROW", username: player.username});
         } else if(this.isDown("DOWN_ARROW")) {
+          this.__pos = 'down';
+          this.__frame = 0;
           this.emit('Move player', {x: this.x, y: this.y, to: "DOWN_ARROW", username: player.username});
         }
+
+        if(this.isDown("SPACE")){
+          this.animate("walk_" + this.__pos, 4, this.__frame, 4);
+          this.animate("walk_" + this.__pos, 1, 1);
+          this.stop();
+          this.x -= this._movement.x;
+          this.y -= this._movement.y;
+
+          this.emit('Shoot player', {pos: this.__pos, frame: this.__frame, username: player.username});
+
+        }else{
+          this.animate("walk_" + this.__pos, 0, this.__frame, 3);
+        }
+
       })
       .onHit('Solid', function(){
         this.x -= this._movement.x;
