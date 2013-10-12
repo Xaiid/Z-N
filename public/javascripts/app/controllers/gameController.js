@@ -71,6 +71,11 @@ ZombieWorld.gameController = {
       
   },
 
+  removePlayer: function(player){
+    ZombieWorld.Players[player].Entity.destroy();
+    delete ZombieWorld.Players[player];
+  },
+
   loadPlayers: function(){
     ZombieWorld.gameController.loadTeam();
     ZombieWorld.gameController.myPlayer();
