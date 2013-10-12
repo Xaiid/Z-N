@@ -1,4 +1,21 @@
 extends layout
 
 block content
-  p Sign up to Zombie nation
+  script(src='/javascripts/app/controllers/selectController.js')
+
+  form
+    input.username(placeholder='Username')
+
+    p Select player
+
+    .player
+      input.pick(type='radio', value='player1', name='player')
+      | Player 1
+    .player
+      input.pick(type='radio', value='player2', name='player')
+      | Player 2
+    .player
+      input.pick(type='radio', value='player3', name='player')
+      | Player 3
+
+    button.play(type='submit') Play

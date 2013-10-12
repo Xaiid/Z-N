@@ -4,7 +4,9 @@ ZombieWorld.gameController = {
       ZombieWorld.sprites = {
 
         players: Crafty.sprite(40, "/images/principal-character.png", {
-          player1: [0,0]
+          player1: [0,0],
+          player2: [0,0],
+          player3: [0,0]
         }),
 
         zombies: Crafty.sprite(32, "/images/power-tanger.png", {
@@ -62,7 +64,6 @@ ZombieWorld.gameController = {
     
     //TODO [partial bug] WAIT FOR LAND!!!
     ZombieWorld.Players[player.username] = player;
-    console.log(player.type);
 
     ZombieWorld.Players[player.username].Entity = Crafty.e('Player, ' + player.type)
         .attr({

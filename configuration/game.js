@@ -19,13 +19,13 @@ var Configuration = {
 
 //Players
 var player1 = {
-  speed: 2
+  speed: 1
 };
 var player2 = {
-  speed: 0
+  speed: 2
 };
 var player3 = {
-  speed: 0
+  speed: 3
 };
 
 //Zombies
@@ -66,3 +66,5 @@ module.exports.map = function(level){
 };
 
 module.exports.player1 = player1;
+module.exports.player2 = player2;
+module.exports.player3 = player3;
