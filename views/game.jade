@@ -3,6 +3,7 @@ extends layout
 block content
   script(src='/javascripts/app/controllers/gameController.js')
   script(src='/javascripts/app/controllers/socketController.js')
+  script(src='/javascripts/app/controllers/chatController.js')
 
   script
     $(function(){
@@ -10,3 +11,10 @@ block content
     });
 
   p Run for your life B*TCH
+  .chat-icon
+  #chat-slide
+    form#chatForm
+      label Send message here
+      textarea#msg
+      input.btn.btn-primary(type="submit")
+    div#chat
