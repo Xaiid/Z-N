@@ -5,7 +5,7 @@ ZombieWorld.Components.actor = Crafty.c('Zombie', {
     .bind('Click', function(e) {
       if(ZombieWorld.currentPlayer.zombieController){
         var zombie = _.findWhere(ZombieWorld.Zombies, {entity: this});
-        ZombieWorld.currentZombie = zombie.name;
+        ZombieWorld.currentZombie = zombie ? zombie.name : null;
       }else{console.log("Sorry but you can't control zombies :(");}
     });
   }
