@@ -14,6 +14,7 @@ ZombieWorld.socketController = {
     ZombieWorld.socket.on('Load players', ZombieWorld.gameController.setPlayers);
     ZombieWorld.socket.on('New player', ZombieWorld.gameController.newPlayer);
     ZombieWorld.socket.on('Remove player', ZombieWorld.gameController.removePlayer);
+    ZombieWorld.socket.on('Create Zombies', ZombieWorld.gameController.createZombies);
 
     ZombieWorld.socket.on('Shoot player', function(user){
       var _Player = _.find(ZombieWorld.Players, function(player){ return player.username === user.username; });

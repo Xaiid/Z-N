@@ -15,7 +15,7 @@ ZombieWorld.gameController = {
           player3: [0,0]
         }),
 
-        zombies: Crafty.sprite(32, "/images/power-tanger.png", {
+        zombies: Crafty.sprite(40, "/images/zombie_1.png", {
           zombie1: [0,0]
         })
       };
@@ -69,6 +69,8 @@ ZombieWorld.gameController = {
   newPlayer: function(player){
     
     //TODO [partial bug] WAIT FOR LAND!!!
+    setTimeout(function(){
+
     ZombieWorld.Players[player.username] = player;
 
     ZombieWorld.Players[player.username].Entity = Crafty.e('Player, ' + player.type)
@@ -81,7 +83,10 @@ ZombieWorld.gameController = {
         .animate("walk_right", 0 , 2 ,2)
         .animate("walk_up", 0,  3, 2)
         .animate("walk_down", 0, 0 , 2);
-      
+
+    ZombieWorld.socket.emit('Create Zombies', player.level);
+
+    }, 500);
   },
 
    removePlayer: function(player){
@@ -92,7 +97,6 @@ ZombieWorld.gameController = {
   loadPlayers: function(){
     ZombieWorld.gameController.loadTeam();
     ZombieWorld.gameController.myPlayer();
-    ZombieWorld.gameController.createZombies();
   },
 
   loadTeam: function(){
@@ -186,21 +190,31 @@ ZombieWorld.gameController = {
     }
   },
 
-  createZombies: function(){
-    _.each(ZombieWorld.Players, function(player){
-
-      for(var i=0; i < player.level;  i++){
-        ZombieWorld.Zombies[_.uniqueId('zombie')] = Crafty.e('Zombie, ' + 'zombie1')
+  createZombies: function(level){
+      for(var i=0; i < level + 1;  i++){
+        var name = _.uniqueId('zombie');
+        console.log(name)
+        ZombieWorld.Zombies[name] = {
+          level: level,
+          name: name,
+          entity: Crafty.e('Zombie, ' + 'zombie1')
           .attr({
-            x: 40,
-            y: 40 + 40 * i,
+            x: 160,
+            y: 160 + 40 * i,
           })
-          .animate("walk_left", 0 , 1,  2)
-          .animate("walk_right", 0 , 2 ,2)
-          .animate("walk_up", 0,  3, 2)
-          .animate("walk_down", 0, 0 , 2);
+          .animate("walk_left", 0 , 1,  1)
+          .animate("walk_right", 0 , 2 ,1)
+          .animate("walk_up", 0,  3, 1)
+          .animate("walk_down", 0, 0 , 1)
+          .collision()
+          .onHit('Solid', function(){
+            console.log("hiiiit");
+            this.x -= this._movement.x;
+            this.y -= this._movement.y;
+          })
+        }
       }
-    });
+
   }
 
 };
