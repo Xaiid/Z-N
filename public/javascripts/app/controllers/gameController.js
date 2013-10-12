@@ -3,10 +3,13 @@ ZombieWorld.gameController = {
   loadSprites: function(){
       ZombieWorld.sprites = {
 
-        players: Crafty.sprite(32, "/images/power-tanger.png", {
+        players: Crafty.sprite(40, "/images/principal-character.png", {
           player1: [0,0]
-        })
+        }),
 
+        zombies: Crafty.sprite(32, "/images/power-tanger.png", {
+          zombie1: [0,0]
+        })
       };
   },
 
@@ -57,6 +60,7 @@ ZombieWorld.gameController = {
 
   newPlayer: function(player){
     ZombieWorld.Players[player.username] = player;
+    console.log(player.type);
 
     ZombieWorld.Players[player.username].Entity = Crafty.e('Player, ' + player.type)
         .attr({
@@ -69,11 +73,6 @@ ZombieWorld.gameController = {
         .animate("walk_up", 0,  3, 2)
         .animate("walk_down", 0, 0 , 2);
       
-  },
-
-  removePlayer: function(player){
-    ZombieWorld.Players[player].Entity.destroy();
-    delete ZombieWorld.Players[player];
   },
 
   loadPlayers: function(){
@@ -156,7 +155,7 @@ ZombieWorld.gameController = {
     console.log("creating zombieees");
     _.each(ZombieWorld.Players, function(player){
 
-      Crafty.e('Zombie')
+      Crafty.e('Zombie, ' + 'zombie1')
           .attr({
             x: 45,
             y: 45,
