@@ -143,7 +143,8 @@ ZombieWorld.gameController = {
 
       })
       .onHit('Solid', function(){
-        //logic
+        console.log('here');
+        player.speed = 0;
       })
       .onHit('Next', function(){
         console.log('Next level');
