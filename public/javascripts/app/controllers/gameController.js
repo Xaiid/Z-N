@@ -89,7 +89,7 @@ ZombieWorld.gameController = {
     }, 500);
   },
 
-   removePlayer: function(player){
+  removePlayer: function(player){
     ZombieWorld.Players[player].Entity.destroy();
     delete ZombieWorld.Players[player];
   },
