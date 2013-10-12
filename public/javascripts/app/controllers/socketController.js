@@ -16,13 +16,16 @@ ZombieWorld.socketController = {
     ZombieWorld.socket.on('Remove player', ZombieWorld.gameController.removePlayer);
 
     ZombieWorld.socket.on('Shoot player', function(user){
-      var Player = _.find(ZombieWorld.Players, function(player){ return player.username === user.username; });
+      var _Player = _.find(ZombieWorld.Players, function(player){ return player.username === user.username; });
 
-      if(!Player){ return false; }
-      Player = Player.Entity;
+      if(!_Player){ return false; }
+      Player = _Player.Entity;
+      Player.type = _Player.type; 
+      Player.__pos = user.pos;
 
       Player.animate("walk_" + user.pos, 4, user.frame, 4);
       Player.animate("walk_" + user.pos, 1, 1);
+      Player.bullet();
     });
 
     ZombieWorld.socket.on('Move player', function(user){

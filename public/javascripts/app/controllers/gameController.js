@@ -160,6 +160,7 @@ ZombieWorld.gameController = {
           this.stop();
           this.x -= this._movement.x;
           this.y -= this._movement.y;
+          this.bullet();
 
           this.emit('Shoot player', {pos: this.__pos, frame: this.__frame, username: player.username});
 
