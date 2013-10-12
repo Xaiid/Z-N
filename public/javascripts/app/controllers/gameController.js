@@ -151,7 +151,8 @@ ZombieWorld.gameController = {
         this.y -= this._movement.y;
       })
       .onHit('Next', function(){
-        console.log('Next level');
+        this.destroy();
+        this.emit('Next level', {username: player.username});
       });
     }
   },
