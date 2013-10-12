@@ -113,12 +113,9 @@ ZombieWorld.socketController = {
         ZombieWorld.Level = player.level;
 
         $.get('/configuration?level='+player.level).done(function(configuration){
-          console.log(configuration);
           delete ZombieWorld.Land;
           ZombieWorld.Land  = configuration;
-          ZombieWorld.gameController.generateLevel(function(){
-            ZombieWorld.gameController.loadPlayers();
-          });
+          Crafty.scene('Level'+ZombieWorld.Level);
         });
       }
 
