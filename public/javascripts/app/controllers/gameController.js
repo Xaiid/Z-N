@@ -208,7 +208,6 @@ ZombieWorld.gameController = {
           .animate("walk_down", 0, 0 , 1)
           .collision()
           .onHit('Solid', function(){
-            console.log("hiiiit");
             this.x -= this._movement.x;
             this.y -= this._movement.y;
           })

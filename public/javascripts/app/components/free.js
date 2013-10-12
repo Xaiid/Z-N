@@ -2,10 +2,10 @@ ZombieWorld.Components.free = Crafty.c('Free', {
   init: function(){
     this.addComponent('2D, Canvas, Mouse')
     .bind('Click', function(e){
-      var zombieName = ZombieWorld.currentZombie;
-      var zombie  = _.findWhere(ZombieWorld.Zombies, {_entityName: zombieName});
-
-      if(!zombie){return false;}
+      this.name = ZombieWorld.currentZombie;
+      var Zombie  = _.findWhere(ZombieWorld.Zombies, {name: this.name});
+      if(!Zombie){return false;}
+      var zombie = Zombie.entity;
 
       if(!zombie.moving){
 
@@ -22,9 +22,10 @@ ZombieWorld.Components.free = Crafty.c('Free', {
 
           var move = function(){
             setTimeout(function(){
-              zombie.animate(animation, 10, -1);
+              zombie.animate(animation, 50, -1);
               start[pos] -= 1;
-              zombie[pos] = start[pos] 
+              zombie[pos] = start[pos]; 
+              ZombieWorld.socket.emit('Move zombie', {x: start.x, y: start.y, to: animation, who: { name: self.name, level: Zombie.level}});
               if(zombie[pos] > self[pos]){
                 move();
               }else{return cb()}
@@ -38,9 +39,10 @@ ZombieWorld.Components.free = Crafty.c('Free', {
 
           var move = function(){
             setTimeout(function(){
-              zombie.animate(animation, 10, -1);
+              zombie.animate(animation, 50, -1);
               start[pos] += 1;
-              zombie[pos] = start[pos] 
+              zombie[pos] = start[pos];
+             ZombieWorld.socket.emit('Move zombie', {x: start.x, y: start.y, to: animation, who: { name: self.name, level: Zombie.level}});
               if(zombie[pos] < self[pos]){
                 move();
               }else{return cb()}

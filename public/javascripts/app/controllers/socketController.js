@@ -66,6 +66,16 @@ ZombieWorld.socketController = {
 
     });
 
+    ZombieWorld.socket.on('Move zombie', function(zombie){
+      var localZombie = ZombieWorld.Zombies[zombie.who.name];
+
+      if(localZombie){
+        localZombie.entity.x = zombie.x;
+        localZombie.entity.y = zombie.y;
+        localZombie.entity.animate(zombie.to, 50);
+      }
+    });
+
     ZombieWorld.socket.on('Error', function(error){
       alert(error);
     });
