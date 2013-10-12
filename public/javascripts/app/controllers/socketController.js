@@ -76,6 +76,14 @@ ZombieWorld.socketController = {
       }
     });
 
+    ZombieWorld.socket.on('Send message', function(data){
+      if(data.player === ZombieWorld.currentPlayer.username){
+        $('#chat').append('<p> Me: ' + data.msg +'</p>');
+      }else{
+        $('#chat').append('<p>' + data.player +": "+ data.msg +'</p>');
+      }
+    });
+
     ZombieWorld.socket.on('Error', function(error){
       alert(error);
     });
