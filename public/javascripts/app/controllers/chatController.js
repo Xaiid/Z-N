@@ -8,11 +8,9 @@ $( function(){
 
   $('#chatForm').submit(function(event){
     event.preventDefault();
-    console.log(ZombieWorld.currentPlayer);
     var player = ZombieWorld.currentPlayer;
     var msg =  $('#msg');
 
-    console.log(player.username);
     var data = {
       msg: msg.val(),
       player: player.username,
