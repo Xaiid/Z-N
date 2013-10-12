@@ -39,7 +39,8 @@ ZombieWorld.gameController = {
         clearInterval(timer); 
         var level = ZombieWorld.currentPlayer.level;
         $.get('/configuration?level='+level).done(function(configuration){
-          ZombieWorld.Land = configuration;
+          ZombieWorld.Level = level;
+          ZombieWorld.Land  = configuration;
           self.loadSprites();
           return cb();
         });
@@ -50,7 +51,7 @@ ZombieWorld.gameController = {
 
   generateLevel: function(cb){
     //Ask server for level
-    Crafty.background("url('/images/level 1.png')");
+    Crafty.background("url('/images/level "+ZombieWorld.Level+".png')");
     drawGrid(ZombieWorld.Land.map.Grid, function(){
       console.log('Map drawn');
       return cb();
@@ -194,7 +195,7 @@ ZombieWorld.gameController = {
       })
       .onHit('Next', function(){
         this.destroy();
-        this.emit('Next level', {username: player.username});
+        this.emit('Next level', player.username);
       });
     }
   },

@@ -90,6 +90,40 @@ ZombieWorld.socketController = {
       }
     });
 
+    ZombieWorld.socket.on('Next Level', function(player){
+      console.log('Current Level: ', ZombieWorld.Level);
+
+      if(ZombieWorld.Players[player.username]){
+        ZombieWorld.Players[player.username].level = player.level;
+      }
+
+      if(!ZombieWorld.currentPlayer.zombieController){
+        ZombieWorld.currentPlayer.level = player.level;
+      }
+
+      var left = _.find(ZombieWorld.Players, function(Player){ 
+        return Player.level === ZombieWorld.Level && !Player.zombieController;
+      });
+
+      if(!left){
+        if(ZombieWorld.currentPlayer.zombieController){
+          ZombieWorld.currentPlayer.level = player.level;
+        }
+
+        ZombieWorld.Level = player.level;
+
+        $.get('/configuration?level='+player.level).done(function(configuration){
+          console.log(configuration);
+          delete ZombieWorld.Land;
+          ZombieWorld.Land  = configuration;
+          ZombieWorld.gameController.generateLevel(function(){
+            ZombieWorld.gameController.loadPlayers();
+          });
+        });
+      }
+
+    });
+
     ZombieWorld.socket.on('Error', function(error){
       alert(error);
     });

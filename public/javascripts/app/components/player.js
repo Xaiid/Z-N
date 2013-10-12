@@ -14,8 +14,8 @@ ZombieWorld.Components.player = Crafty.c('Player', {
       switch(this.type || ZombieWorld.currentPlayer.type){
         case 'player1':
           range = _.range(30);
-          w = 2;
-          h = 2;
+          w = 3;
+          h = 3;
           hit = 1;
           speed = 10;
           time = 50;
