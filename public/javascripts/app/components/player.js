@@ -7,7 +7,7 @@ ZombieWorld.Components.player = Crafty.c('Player', {
     if(!this.shoot){
       this.shoot = true;
 
-      var bullet, range, w, h, speed, time;
+      var bullet, range, w, h, speed, time, hit;
       var self = this;
 
 
@@ -16,6 +16,7 @@ ZombieWorld.Components.player = Crafty.c('Player', {
           range = _.range(30);
           w = 2;
           h = 2;
+          hit = 1;
           speed = 10;
           time = 50;
         break;
@@ -23,6 +24,7 @@ ZombieWorld.Components.player = Crafty.c('Player', {
           range = _.range(13);
           w = 8;
           h = 4;
+          hit = 5;
           speed = 30;
           time = 100;
         break;
@@ -30,6 +32,7 @@ ZombieWorld.Components.player = Crafty.c('Player', {
           range = _.range(100);
           w = 15;
           h = 6;
+          hit = 10;
           speed = 80;
           time = 300;
         break;
@@ -44,7 +47,16 @@ ZombieWorld.Components.player = Crafty.c('Player', {
         y: this.y,
         w: w,
         h: h
-      }).color('rgb(250,0,0)');
+      }).color('rgb(250,0,0)').onHit('Zombie', function(arg){
+        var zombie = _.findWhere(ZombieWorld.Zombies, {entity: arg[0].obj});
+        zombie.entity.__life -= hit;
+        if(zombie.entity.__life === 0){
+          delete ZombieWorld.Zombies[zombie.name];
+          ZombieWorld.socket.emit('Kill Zombie', {name: zombie.name, level: zombie.level});
+          zombie.entity.destroy();
+        }
+        this.destroy();
+      });
 
       var position = this.__pos || 'left';
 

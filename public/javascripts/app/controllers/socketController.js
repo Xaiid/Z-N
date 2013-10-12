@@ -76,6 +76,12 @@ ZombieWorld.socketController = {
       }
     });
 
+    ZombieWorld.socket.on('Kill Zombie', function(zombie){
+      if(!ZombieWorld.Zombies[zombie]){ return false; }
+      ZombieWorld.Zombies[zombie].entity.destroy();
+      delete ZombieWorld.Zombies[zombie];
+    });
+
     ZombieWorld.socket.on('Send message', function(data){
       if(data.player === ZombieWorld.currentPlayer.username){
         $('#chat').append('<p> Me: ' + data.msg +'</p>');

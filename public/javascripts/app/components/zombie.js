@@ -1,5 +1,6 @@
 ZombieWorld.Components.actor = Crafty.c('Zombie', {
   init: function(){
+    this.__life = 10;
     this.addComponent('Actor, Mouse')
     .bind('Click', function(e) {
       if(ZombieWorld.currentPlayer.zombieController){
