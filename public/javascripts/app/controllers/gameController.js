@@ -209,15 +209,13 @@ ZombieWorld.gameController = {
   },
 
   createZombies: function(zombies){
-    if(ZombieWorld.currentPlayer.zombieController && !ZombieWorld.Zombies){
-      return false;
-    }
     _.each(zombies, function(zombie){
       ZombieWorld.Zombies[zombie.name] = zombie; 
       ZombieWorld.Zombies[zombie.name].entity = Crafty.e('Zombie, ' + 'zombie' + zombie.type)
       .attr({
         x: zombie.x,
         y: zombie.y,
+        alpha: ZombieWorld.currentPlayer.zombieController ? 0.6 : 1
       })
       .animate("walk_left", 0 , 1,  1)
       .animate("walk_right", 0 , 2 ,1)
@@ -225,7 +223,6 @@ ZombieWorld.gameController = {
       .animate("walk_down", 0, 0 , 1)
       .collision()
       .onHit('Solid', function(e){
-        var zombie  = _.findWhere(ZombieWorld.Zombies, {name: ZombieWorld.currentZombie});
         this.shouldMove = false;
         if(e[0].obj.x > this.x){
           this.x -=1;
@@ -240,7 +237,6 @@ ZombieWorld.gameController = {
           this.y +=1;
         }
       }).onHit('Next', function(e){
-        var zombie  = _.findWhere(ZombieWorld.Zombies, {name: ZombieWorld.currentZombie});
         this.shouldMove = false;
         if(e[0].obj.x > this.x){
           this.x -=1;
@@ -254,6 +250,8 @@ ZombieWorld.gameController = {
         if(e[0].obj.y < this.y){
           this.y +=1;
         }
+      }).onHit('Player', function(e){
+        e[0].obj.destroy();
       });
     });
   }
