@@ -19,13 +19,13 @@ var Configuration = {
 
 //Players
 var player1 = {
-  speed: 1
+  speed: 3
 };
 var player2 = {
   speed: 2
 };
 var player3 = {
-  speed: 3
+  speed: 1
 };
 
 //Zombies
