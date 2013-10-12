@@ -94,7 +94,15 @@ ZombieWorld.gameController = {
         .animate("walk_up", 0,  3, 2)
         .animate("walk_down", 0, 0 , 2);
 
-    ZombieWorld.socket.emit('Create Zombies', player.level);
+
+      var totalPlayers = _.keys(ZombieWorld.Players).length;
+      var totalZombies = _.keys(ZombieWorld.Zombies).length;
+
+      if(_.findWhere(ZombieWorld.Zombies, {from: player.username})){
+        ZombieWorld.socket.emit('Load zombies', player.level);
+      }else{
+        ZombieWorld.socket.emit('Create Zombies', {level: player.level, from: player.username});
+      }
 
     }, 500);
   },
@@ -200,68 +208,55 @@ ZombieWorld.gameController = {
     }
   },
 
-  createZombies: function(level, type){
-      for(var i=0; i < level + 1;  i++){
-        var name = _.uniqueId('zombie');
-        ZombieWorld.Zombies[name] = {
-          level: level,
-          name: name,
-          entity: Crafty.e('Zombie, ' + 'zombie' + type)
-          .attr({
-            x: 160,
-            y: 160 + 40 * i,
-          })
-          .animate("walk_left", 0 , 1,  1)
-          .animate("walk_right", 0 , 2 ,1)
-          .animate("walk_up", 0,  3, 1)
-          .animate("walk_down", 0, 0 , 1)
-          .collision()
-          .onHit('Solid', function(e){
-            var zombie  = _.findWhere(ZombieWorld.Zombies, {name: ZombieWorld.currentZombie});
-            this.shouldMove = false;
-
-            if(e[0].obj.x > this.x){
-              this.x -=1;
-            }
-
-            if(e[0].obj.x < this.x){
-              this.x +=1;
-            }
-
-            if(e[0].obj.y > this.y){
-              this.y -=1;
-            }
-
-            if(e[0].obj.y < this.y){
-              this.y +=1;
-            }
-            
-          }).onHit('Next', function(e){
-            var zombie  = _.findWhere(ZombieWorld.Zombies, {name: ZombieWorld.currentZombie});
-            this.shouldMove = false;
-
-            if(e[0].obj.x > this.x){
-              this.x -=1;
-            }
-
-            if(e[0].obj.x < this.x){
-              this.x +=1;
-            }
-
-            if(e[0].obj.y > this.y){
-              this.y -=1;
-            }
-
-            if(e[0].obj.y < this.y){
-              this.y +=1;
-            }
-            
-          })
+  createZombies: function(zombies){
+    if(ZombieWorld.currentPlayer.zombieController && !ZombieWorld.Zombies){
+      return false;
+    }
+    _.each(zombies, function(zombie){
+      ZombieWorld.Zombies[zombie.name] = zombie; 
+      ZombieWorld.Zombies[zombie.name].entity = Crafty.e('Zombie, ' + 'zombie' + zombie.type)
+      .attr({
+        x: zombie.x,
+        y: zombie.y,
+      })
+      .animate("walk_left", 0 , 1,  1)
+      .animate("walk_right", 0 , 2 ,1)
+      .animate("walk_up", 0,  3, 1)
+      .animate("walk_down", 0, 0 , 1)
+      .collision()
+      .onHit('Solid', function(e){
+        var zombie  = _.findWhere(ZombieWorld.Zombies, {name: ZombieWorld.currentZombie});
+        this.shouldMove = false;
+        if(e[0].obj.x > this.x){
+          this.x -=1;
         }
-      }
-
+        if(e[0].obj.x < this.x){
+          this.x +=1;
+        }
+        if(e[0].obj.y > this.y){
+          this.y -=1;
+        }
+        if(e[0].obj.y < this.y){
+          this.y +=1;
+        }
+      }).onHit('Next', function(e){
+        var zombie  = _.findWhere(ZombieWorld.Zombies, {name: ZombieWorld.currentZombie});
+        this.shouldMove = false;
+        if(e[0].obj.x > this.x){
+          this.x -=1;
+        }
+        if(e[0].obj.x < this.x){
+          this.x +=1;
+        }
+        if(e[0].obj.y > this.y){
+          this.y -=1;
+        }
+        if(e[0].obj.y < this.y){
+          this.y +=1;
+        }
+      });
+    });
   }
-
 };
 
 var drawGrid = function(grid, cb){
