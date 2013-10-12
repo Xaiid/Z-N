@@ -193,7 +193,6 @@ ZombieWorld.gameController = {
   createZombies: function(level){
       for(var i=0; i < level + 1;  i++){
         var name = _.uniqueId('zombie');
-        console.log(name)
         ZombieWorld.Zombies[name] = {
           level: level,
           name: name,
@@ -207,9 +206,46 @@ ZombieWorld.gameController = {
           .animate("walk_up", 0,  3, 1)
           .animate("walk_down", 0, 0 , 1)
           .collision()
-          .onHit('Solid', function(){
-            this.x -= this._movement.x;
-            this.y -= this._movement.y;
+          .onHit('Solid', function(e){
+            var zombie  = _.findWhere(ZombieWorld.Zombies, {name: ZombieWorld.currentZombie});
+            this.shouldMove = false;
+
+            if(e[0].obj.x > this.x){
+              this.x -=1;
+            }
+
+            if(e[0].obj.x < this.x){
+              this.x +=1;
+            }
+
+            if(e[0].obj.y > this.y){
+              this.y -=1;
+            }
+
+            if(e[0].obj.y < this.y){
+              this.y +=1;
+            }
+            
+          }).onHit('Next', function(e){
+            var zombie  = _.findWhere(ZombieWorld.Zombies, {name: ZombieWorld.currentZombie});
+            this.shouldMove = false;
+
+            if(e[0].obj.x > this.x){
+              this.x -=1;
+            }
+
+            if(e[0].obj.x < this.x){
+              this.x +=1;
+            }
+
+            if(e[0].obj.y > this.y){
+              this.y -=1;
+            }
+
+            if(e[0].obj.y < this.y){
+              this.y +=1;
+            }
+            
           })
         }
       }

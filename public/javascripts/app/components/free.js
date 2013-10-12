@@ -6,6 +6,7 @@ ZombieWorld.Components.free = Crafty.c('Free', {
       var Zombie  = _.findWhere(ZombieWorld.Zombies, {name: this.name});
       if(!Zombie){return false;}
       var zombie = Zombie.entity;
+      zombie.shouldMove = true;
 
       if(!zombie.moving){
 
@@ -26,7 +27,7 @@ ZombieWorld.Components.free = Crafty.c('Free', {
               start[pos] -= 1;
               zombie[pos] = start[pos]; 
               ZombieWorld.socket.emit('Move zombie', {x: start.x, y: start.y, to: animation, who: { name: self.name, level: Zombie.level}});
-              if(zombie[pos] > self[pos]){
+              if(zombie[pos] > self[pos] && zombie.shouldMove){
                 move();
               }else{return cb()}
             }, 30);
@@ -43,7 +44,8 @@ ZombieWorld.Components.free = Crafty.c('Free', {
               start[pos] += 1;
               zombie[pos] = start[pos];
              ZombieWorld.socket.emit('Move zombie', {x: start.x, y: start.y, to: animation, who: { name: self.name, level: Zombie.level}});
-              if(zombie[pos] < self[pos]){
+
+              if(zombie[pos] < self[pos] && zombie.shouldMove){
                 move();
               }else{return cb()}
             }, 30);
