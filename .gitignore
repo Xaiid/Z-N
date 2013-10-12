@@ -3,3 +3,4 @@ tmp/
 *.swp
 *.swo
 node_modules/
+public/stylesheets/.sass-cache/*
