@@ -3,9 +3,15 @@ ZombieWorld.gameController = {
   loadSprites: function(){
       ZombieWorld.sprites = {
 
-        players: Crafty.sprite(40, "/images/principal-character.png", {
-          player1: [0,0],
-          player2: [0,0],
+        players1: Crafty.sprite(40, "/images/player_1.png", {
+          player1: [0,0]
+        }),
+
+        players2: Crafty.sprite(40, "/images/player_2.png", {
+          player2: [0,0]
+        }),
+
+        players3: Crafty.sprite(40, "/images/player_2.png", {
           player3: [0,0]
         }),
 
