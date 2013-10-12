@@ -1,9 +1,11 @@
 ZombieWorld.Components.actor = Crafty.c('Zombie', {
   init: function(){
-    this.addComponent('Zombie, 2D, Canvas, Solid, Collision, SpriteAnimation, Mouse')
+    this.addComponent('Actor, Mouse')
     .bind('Click', function(e) {
-      var zombie = _.findWhere(ZombieWorld.Zombies, {entity: this});
-      ZombieWorld.currentZombie = zombie.name;
+      if(ZombieWorld.currentPlayer.zombieController){
+        var zombie = _.findWhere(ZombieWorld.Zombies, {entity: this});
+        ZombieWorld.currentZombie = zombie.name;
+      }else{console.log("Sorry but you can't control zombies :()");}
     });
   }
 
