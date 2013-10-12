@@ -66,19 +66,28 @@ a
 #intro-landing
   +box-shadow(inset 0 0 25px rgba(0,0,0,0.75))
   background: #302c28 url('../../images/info-bg.jpg') no-repeat
+  background-size: 100% auto
   width: 100%
   margin: 400px 0 0
-  min-height: 350px
-  background: #e3e1c7
+  min-height: 400px
   padding: 40px
   text-align: center
   line-height: 44px
-  overflow-x: auto
+  overflow-x: hidden 
   overflow-y: hidden
   max-height: 360px
   white-space: nowrap
   .btn
     margin-top: 40px
+    +border-radius(0px)
+  .rpg-button
+    background: #463627
+    border: 2px solid #231c15
+    box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b
+    padding: 12px 25px
+    &:hover
+      +opacity(.8)
+
   &::-webkit-scrollbar
     height: 8px
     width: 8px
@@ -89,6 +98,12 @@ a
   &::-webkit-scrollbar-track
     background: none
   
+  .container-controls
+    overflow: hidden
+    float: right
+    .rpg-button
+      &.prev, &.next
+        padding: 0px 20px
 
   .step1
     display: inline-block
@@ -107,8 +122,6 @@ a
   line-height: 50px
   padding-left: 4px
   cursor: pointer
-  &:hover
-    +opacity(.8)
 
 .prev
   float: left
