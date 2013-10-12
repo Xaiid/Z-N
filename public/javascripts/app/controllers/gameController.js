@@ -139,8 +139,8 @@ ZombieWorld.gameController = {
         }
       })
       .onHit('Solid', function(){
-        console.log('here');
-        player.speed = 0;
+        this.x -= this._movement.x;
+        this.y -= this._movement.y;
       })
       .onHit('Next', function(){
         console.log('Next level');
