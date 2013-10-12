@@ -16,9 +16,10 @@ ZombieWorld.socketController = {
     ZombieWorld.socket.on('Remove player', ZombieWorld.gameController.removePlayer);
 
     ZombieWorld.socket.on('Move player', function(user){
-      var Player = _.find(ZombieWorld.Players, function(player){ return player.username === user.username; }).Entity;
+      var Player = _.find(ZombieWorld.Players, function(player){ return player.username === user.username; });
 
       if(!Player){ return false; }
+      Player = Player.Entity;
 
       Player.x = user.x;
       Player.y = user.y;
