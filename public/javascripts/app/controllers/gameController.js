@@ -164,7 +164,11 @@ ZombieWorld.gameController = {
           .attr({
             x: 40,
             y: 40 + 40 * i,
-          });
+          })
+          .animate("walk_left", 0 , 1,  2)
+          .animate("walk_right", 0 , 2 ,2)
+          .animate("walk_up", 0,  3, 2)
+          .animate("walk_down", 0, 0 , 2);
       }
     });
   }

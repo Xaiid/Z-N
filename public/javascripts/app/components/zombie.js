@@ -1,9 +1,10 @@
 ZombieWorld.Components.actor = Crafty.c('Zombie', {
   init: function(){
-    this.addComponent('2D,Canvas, Solid, Mouse')
+    this.addComponent('2D,Canvas, Solid, Mouse, SpriteAnimation')
     .bind('Click', function(e) {
-      console.log("You clicked a zombie");
-    });
+      ZombieWorld.currentZombie = this._entityName;
+    })
+
   }
 
 });
