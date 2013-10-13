@@ -51,6 +51,7 @@ ZombieWorld.Components.player = Crafty.c('Player', {
         h: h
       }).color('rgb(250,0,0)').onHit('Zombie', function(arg){
         var zombie = _.findWhere(ZombieWorld.Zombies, {entity: arg[0].obj});
+        if(!zombie){return false;}
         zombie.entity.__life -= hit;
         if(zombie.entity.__life === 0){
           Crafty.audio.play(ZombieWorld.currentPlayer.type+'_kill');
