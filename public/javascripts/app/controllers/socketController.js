@@ -94,11 +94,12 @@ ZombieWorld.socketController = {
       console.log('Current Level: ', ZombieWorld.Level);
 
       if(ZombieWorld.Players[player.username]){
-        ZombieWorld.Players[player.username].level = player.level;
+        // delete ZombieWorld.Players[player.username].Entity;
+        ZombieWorld.Players[player.username] = player;
       }
 
       if(!ZombieWorld.currentPlayer.zombieController){
-        ZombieWorld.currentPlayer.level = player.level;
+        ZombieWorld.currentPlayer = player;
       }
 
       var left = _.find(ZombieWorld.Players, function(Player){ 
@@ -114,7 +115,7 @@ ZombieWorld.socketController = {
 
         $.get('/configuration?level='+player.level).done(function(configuration){
           delete ZombieWorld.Land;
-          ZombieWorld.Land  = configuration;
+          ZombieWorld.Land = configuration;
           Crafty.scene('Level'+ZombieWorld.Level);
         });
       }
