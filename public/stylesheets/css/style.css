@@ -77,7 +77,7 @@ body {
 
 /* line 16, ../sass/style.sass */
 .navbar-inverse.navbar {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.4);
   margin-bottom: 0;
 }
 /* line 20, ../sass/style.sass */
@@ -99,7 +99,7 @@ a {
   color: #00b7ff;
 }
 
-/* line 39, ../sass/style.sass */
+/* line 34, ../sass/style.sass */
 #hand-top {
   background: #302c28 url("../../images/hand-bg.jpg") no-repeat;
   background-size: 100%;
@@ -112,33 +112,33 @@ a {
   z-index: -1;
 }
 
-/* line 50, ../sass/style.sass */
+/* line 45, ../sass/style.sass */
 h1 {
   font-size: 24px;
 }
 
-/* line 53, ../sass/style.sass */
+/* line 48, ../sass/style.sass */
 p {
   font-size: 18px;
 }
 
-/* line 56, ../sass/style.sass */
+/* line 51, ../sass/style.sass */
 a {
   color: #908b6c;
 }
 
-/* line 59, ../sass/style.sass */
+/* line 54, ../sass/style.sass */
 .btn-primary {
   background: #262f1e;
   border-color: #1a1e16;
 }
-/* line 62, ../sass/style.sass */
+/* line 57, ../sass/style.sass */
 .btn-primary:hover {
   background: #1a1e16;
   border-color: #1a1e16;
 }
 
-/* line 66, ../sass/style.sass */
+/* line 61, ../sass/style.sass */
 #intro-landing {
   -webkit-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
@@ -156,7 +156,7 @@ a {
   max-height: 360px;
   white-space: nowrap;
 }
-/* line 80, ../sass/style.sass */
+/* line 75, ../sass/style.sass */
 #intro-landing .btn {
   margin-top: 40px;
   -webkit-border-radius: 0px;
@@ -165,54 +165,54 @@ a {
   -o-border-radius: 0px;
   border-radius: 0px;
 }
-/* line 83, ../sass/style.sass */
+/* line 78, ../sass/style.sass */
 #intro-landing .rpg-button {
   background: #463627;
   border: 2px solid #231c15;
   box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b;
   padding: 12px 25px;
 }
-/* line 88, ../sass/style.sass */
+/* line 83, ../sass/style.sass */
 #intro-landing .rpg-button:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
 }
-/* line 91, ../sass/style.sass */
+/* line 86, ../sass/style.sass */
 #intro-landing::-webkit-scrollbar {
   height: 8px;
   width: 8px;
   background: inherit;
 }
-/* line 95, ../sass/style.sass */
+/* line 90, ../sass/style.sass */
 #intro-landing::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0);
   -webkit-border-radius: 1ex;
 }
-/* line 98, ../sass/style.sass */
+/* line 93, ../sass/style.sass */
 #intro-landing::-webkit-scrollbar-track {
   background: none;
 }
-/* line 101, ../sass/style.sass */
+/* line 96, ../sass/style.sass */
 #intro-landing .container-controls {
   overflow: hidden;
   float: right;
 }
-/* line 105, ../sass/style.sass */
+/* line 100, ../sass/style.sass */
 #intro-landing .container-controls .rpg-button.prev, #intro-landing .container-controls .rpg-button.next {
   padding: 0px 20px;
 }
-/* line 108, ../sass/style.sass */
+/* line 103, ../sass/style.sass */
 #intro-landing .step1 {
   display: inline-block;
   width: 100%;
 }
-/* line 112, ../sass/style.sass */
+/* line 107, ../sass/style.sass */
 #intro-landing .step2 {
   display: inline-block;
   width: 100%;
 }
 
-/* line 116, ../sass/style.sass */
+/* line 111, ../sass/style.sass */
 .next, .prev {
   float: right;
   background: #bcb99e;
@@ -224,74 +224,77 @@ a {
   cursor: pointer;
 }
 
-/* line 126, ../sass/style.sass */
+/* line 121, ../sass/style.sass */
 .prev {
   float: left;
   line-height: 49px;
   padding-left: 1px;
 }
 
-/* line 133, ../sass/style.sass */
+/* line 128, ../sass/style.sass */
 #login {
   background: rgba(188, 185, 158, 0.4) url("../../images/zom1.png") no-repeat 90% 90%;
   height: 700px;
   margin: 60px;
   padding: 40px;
+  border: 2px solid #231c15;
 }
-/* line 138, ../sass/style.sass */
+/* line 134, ../sass/style.sass */
 #login h1 {
   font-size: 48px;
   color: #cdccbc;
 }
-/* line 141, ../sass/style.sass */
+/* line 137, ../sass/style.sass */
 #login .col-md-6 {
   margin: 0 auto;
   float: none;
   text-align: center;
 }
-/* line 145, ../sass/style.sass */
+/* line 141, ../sass/style.sass */
 #login .col-md-6 label {
   font-size: 48px;
   color: #524832;
-  margin-bottom: 45px;
+  margin-bottom: 25px;
   width: 100%;
 }
-/* line 150, ../sass/style.sass */
+/* line 146, ../sass/style.sass */
 #login .col-md-6 .btn {
   clear: both;
-  width: 180px;
+  width: 100%;
   height: 60px;
+  color: white;
+  background: #463627;
+  border: 2px solid #231c15;
+  box-shadow: inset -2px 2px 1px #655b52, inset 2px -2px 1px #36281b;
+  padding: 12px 25px;
+}
+/* line 155, ../sass/style.sass */
+#login .col-md-6 .btn:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
 }
 
-/* line 154, ../sass/style.sass */
-#username, #chat-slide textarea {
-  -webkit-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.46);
-  -moz-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.46);
-  box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.46);
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
-  border-radius: 15px;
-  border: 5px solid #626154;
+/* line 159, ../sass/style.sass */
+.username {
+  border: 3px solid #231c15;
   background: #cdccbc;
   width: 80%;
   height: 90px;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
   padding: 20px;
 }
 
-/* line 165, ../sass/style.sass */
+/* line 168, ../sass/style.sass */
 input[type="text"], input[type="password"] {
   outline: 0;
 }
 
-/* line 168, ../sass/style.sass */
+/* line 171, ../sass/style.sass */
 .space {
   height: 48px;
 }
 
-/* line 171, ../sass/style.sass */
+/* line 174, ../sass/style.sass */
 .chat-icon {
   display: none;
   -webkit-transition: 1s;
@@ -300,7 +303,7 @@ input[type="text"], input[type="password"] {
   transition: 1s;
 }
 @media (max-width: 1450px) {
-  /* line 171, ../sass/style.sass */
+  /* line 174, ../sass/style.sass */
   .chat-icon {
     background: transparent url("../../images/chat.png") no-repeat;
     position: absolute;
@@ -311,14 +314,14 @@ input[type="text"], input[type="password"] {
     width: 64px;
     z-index: 999;
   }
-  /* line 183, ../sass/style.sass */
+  /* line 186, ../sass/style.sass */
   .chat-icon.open {
     right: 38%;
     background: transparent url("../../images/close.png") no-repeat center center;
   }
 }
 
-/* line 187, ../sass/style.sass */
+/* line 190, ../sass/style.sass */
 #chat-slide {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -339,14 +342,14 @@ input[type="text"], input[type="password"] {
   transition: 1s;
 }
 @media (min-width: 1451px) {
-  /* line 187, ../sass/style.sass */
+  /* line 190, ../sass/style.sass */
   #chat-slide {
     width: 18%;
     display: block !important;
   }
 }
 @media (max-width: 1450px) {
-  /* line 187, ../sass/style.sass */
+  /* line 190, ../sass/style.sass */
   #chat-slide {
     width: 0;
     overflow: hidden;
@@ -355,7 +358,7 @@ input[type="text"], input[type="password"] {
     -o-transition: 1s;
     transition: 1s;
   }
-  /* line 206, ../sass/style.sass */
+  /* line 209, ../sass/style.sass */
   #chat-slide.visible {
     -webkit-transition: 1s;
     -moz-transition: 1s;
@@ -366,16 +369,16 @@ input[type="text"], input[type="password"] {
     z-index: 9999;
   }
 }
-/* line 211, ../sass/style.sass */
+/* line 214, ../sass/style.sass */
 #chat-slide label {
   color: #cdccbc;
   width: 100%;
 }
-/* line 214, ../sass/style.sass */
+/* line 217, ../sass/style.sass */
 #chat-slide textarea {
   margin-bottom: 20px;
 }
-/* line 218, ../sass/style.sass */
+/* line 221, ../sass/style.sass */
 #chat-slide #chat {
   margin: 20px;
   background: rgba(0, 0, 0, 0.4);
@@ -384,24 +387,61 @@ input[type="text"], input[type="password"] {
   overflow-x: hidden;
   overflow-y: auto;
 }
-/* line 225, ../sass/style.sass */
+/* line 228, ../sass/style.sass */
 #chat-slide #chat p {
   word-wrap: break-word;
   text-align: left;
   font-size: 16px;
 }
-/* line 229, ../sass/style.sass */
+/* line 232, ../sass/style.sass */
 #chat-slide #chat p:nth-child(odd) {
   background: rgba(0, 0, 0, 0.8);
 }
-/* line 231, ../sass/style.sass */
+/* line 234, ../sass/style.sass */
 #chat-slide #chat p:nth-child(even) {
   background: transparent;
 }
 
-/* line 236, ../sass/style.sass */
+/* line 237, ../sass/style.sass */
+#choose-player {
+  text-align: left;
+  padding: 22px 0;
+}
+/* line 241, ../sass/style.sass */
+#choose-player .player label {
+  cursor: pointer;
+  color: white;
+  font-size: 22px;
+}
+/* line 245, ../sass/style.sass */
+#choose-player input[type="radio"] {
+  display: none;
+}
+
+/* line 248, ../sass/style.sass */
+#avatar-player {
+  width: 160px;
+  height: 160px;
+  background: #cdccbc;
+  border: 2px solid #231c15;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+/* line 256, ../sass/style.sass */
+#avatar-player li {
+  display: none;
+  width: 159px;
+  height: 159px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* line 266, ../sass/style.sass */
 footer {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.4);
   height: 60px;
   text-align: center;
   padding-top: 17px;

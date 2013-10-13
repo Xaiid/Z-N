@@ -3,19 +3,29 @@ extends layout
 block content
   script(src='/javascripts/app/controllers/selectController.js')
 
-  form
-    input.username(placeholder='Username')
+  #login 
+    h1 Login
+    form.col-md-6
+      label Username
+      input.username(placeholder='User_test')
 
-    p Select player
+      label Choose your destiny
 
-    .player
-      input.pick(type='radio', value='player1', name='player')
-      | Player 1
-    .player
-      input.pick(type='radio', value='player2', name='player')
-      | Player 2
-    .player
-      input.pick(type='radio', value='player3', name='player')
-      | Player 3
+      #choose-player.col-md-3.col-md-offset-3
+        .player(data-player="avatar_1")
+          label
+            input.pick(type='radio', value='player1', name='player')
+            | Player 1
+        .player(data-player="avatar_2")
+          label
+            input.pick(type='radio', value='player2', name='player')
+            | Player 2
+        .player(data-player="avatar_3")
+          label
+            input.pick(type='radio', value='player3', name='player')
+            | Player 3
+      ul#avatar-player.col-md-3
+        li
+          img(src="/images/avatar_1.png")
 
-    button.play(type='submit') Play
+      button.play.btn.rpg-button(type='submit') Play
