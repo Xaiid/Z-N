@@ -7,6 +7,8 @@ ZombieWorld.Components.player = Crafty.c('Player', {
     if(!this.shoot){
       this.shoot = true;
 
+      Crafty.audio.play(ZombieWorld.currentPlayer.type+'_shot');
+
       var bullet, range, w, h, speed, time, hit;
       var self = this;
 
@@ -51,6 +53,7 @@ ZombieWorld.Components.player = Crafty.c('Player', {
         var zombie = _.findWhere(ZombieWorld.Zombies, {entity: arg[0].obj});
         zombie.entity.__life -= hit;
         if(zombie.entity.__life === 0){
+          Crafty.audio.play(ZombieWorld.currentPlayer.type+'_kill');
           ZombieWorld.socket.emit('Kill Zombie', {name: zombie.name, level: zombie.level});
           zombie.entity.destroy();
         }

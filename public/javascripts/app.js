@@ -20,6 +20,8 @@ var ZombieWorld = {
 
       Crafty.init(width,height);
 
+      ZombieWorld.gameController.loadSounds();
+
       var generate = function(){
         ZombieWorld.gameController.generateLevel(function(){
           ZombieWorld.gameController.loadPlayers();

@@ -30,6 +30,20 @@ ZombieWorld.gameController = {
       };
   },
 
+  loadSounds: function(){
+    Crafty.audio.add({
+      player1_init:       ['/sounds/gun/init.mp3'],
+      player1_shot:       ['/sounds/gun/shot.mp3'],
+      player1_kill:       ['/sounds/gun/kill.mp3'],
+      player2_init:       ['/sounds/shotgun/init.mp3'],
+      player2_shot:       ['/sounds/shotgun/shot.mp3'],
+      player2_kill:       ['/sounds/shotgun/kill.mp3'],
+      player3_init:       ['/sounds/rocket/init.mp3'],
+      player3_shot:       ['/sounds/rocket/shot.mp3'],
+      player3_kill:       ['/sounds/rocket/kill.mp3']
+    });
+  },
+
   getConfiguration: function(cb){
     var self = this;
 
@@ -138,6 +152,7 @@ ZombieWorld.gameController = {
     var player = ZombieWorld.currentPlayer;
     if(!player.zombieController){
 
+      Crafty.audio.play(player.type+'_init');
       player.Entity = Crafty.e('Player, ' + player.type)
       .attr({
         x: player.x,
