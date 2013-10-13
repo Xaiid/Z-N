@@ -98,13 +98,17 @@ ZombieWorld.socketController = {
         ZombieWorld.Players[player.username] = player;
       }
 
-      if(!ZombieWorld.currentPlayer.zombieController){
+      if(!ZombieWorld.currentPlayer.zombieController && ZombieWorld.currentPlayer.username === player.username){
         ZombieWorld.currentPlayer = player;
       }
 
       var left = _.find(ZombieWorld.Players, function(Player){ 
         return Player.level === ZombieWorld.Level && !Player.zombieController;
       });
+
+      if(!ZombieWorld.currentPlayer.zombieController && ZombieWorld.currentPlayer.level === ZombieWorld.Level){
+        left = true;
+      }
 
       if(!left){
         if(ZombieWorld.currentPlayer.zombieController){
