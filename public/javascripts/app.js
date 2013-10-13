@@ -18,7 +18,7 @@ var ZombieWorld = {
       var width = ZombieWorld.Land.map.width * ZombieWorld.Land.map.tile.width;
       var height = ZombieWorld.Land.map.height* ZombieWorld.Land.map.tile.height;
 
-      Crafty.init(width,height);
+      Crafty.init(width,height,'game-area');
 
       ZombieWorld.gameController.loadSounds();
 

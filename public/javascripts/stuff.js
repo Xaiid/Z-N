@@ -19,4 +19,19 @@ $(function(){
         var clickSound = new Audio('/sounds/'+dir+'/select.mp3');
         clickSound.play();
     });
+
+    $('.chat-icon').on('click',function(){
+        $(this).toggleClass('open');
+        $('#chat-slide').toggleClass('visible');
+    });
+
+    var path = window.location.pathname;
+    var links = $('.navbar-nav li a');
+    $.each(links, function(i,val){
+        if ($(val).attr('href') === path){
+            $(val).parent('li').addClass('active');
+        }
+    });
+    
+
 });
