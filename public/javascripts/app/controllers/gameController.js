@@ -273,11 +273,13 @@ ZombieWorld.gameController = {
         var player = _.findWhere(ZombieWorld.Players, {Entity: e[0].obj});
         if(player){
           player.dead = true;
+          ZombieWorld.socket.emit('Kill player', player.username);
         }else if(ZombieWorld.currentPlayer.Entity === e[0].obj){
           var myPlayer = JSON.parse(localStorage.getItem('Player'));
           myPlayer.dead = true;
-          localStorage.setItem(JSON.stringify(myPlayer));
+          localStorage.setItem('Player', JSON.stringify(myPlayer));
           ZombieWorld.currentPlayer.dead = true;
+          ZombieWorld.socket.emit('Kill player', player.username);
         }
         e[0].obj.destroy();
       });
