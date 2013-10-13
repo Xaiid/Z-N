@@ -56,6 +56,7 @@ var createEntities = function(){
     Crafty.background("url('/images/victory2.png')");
   });
 
+  Crafty.audio.play('car');
   for(var c = 30; c <= 500; c += 14){
     var x = Math.floor(Math.random() * 1030) + 900;
     var random = _.sample([1,2,3]);

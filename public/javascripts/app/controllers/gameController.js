@@ -44,7 +44,8 @@ ZombieWorld.gameController = {
       player2_kill:       ['/sounds/shotgun/kill.mp3'],
       player3_init:       ['/sounds/rocket/init.mp3'],
       player3_shot:       ['/sounds/rocket/shot.mp3'],
-      player3_kill:       ['/sounds/rocket/kill.mp3']
+      player3_kill:       ['/sounds/rocket/kill.mp3'],
+      car:                ['/sounds/car.mp3']
     });
   },
 
