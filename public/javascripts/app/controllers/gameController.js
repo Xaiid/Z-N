@@ -198,6 +198,10 @@ ZombieWorld.gameController = {
         }
 
         if(this.isDown("SPACE")){
+          if(!this.shoot){
+            Crafty.audio.play(ZombieWorld.currentPlayer.type+'_shot');
+          }
+
           this.animate("walk_" + this.__pos, 4, this.__frame, 4);
           this.animate("walk_" + this.__pos, 1, 1);
           this.stop();

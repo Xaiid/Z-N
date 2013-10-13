@@ -7,8 +7,6 @@ ZombieWorld.Components.player = Crafty.c('Player', {
     if(!this.shoot){
       this.shoot = true;
 
-      Crafty.audio.play(ZombieWorld.currentPlayer.type+'_shot');
-
       var bullet, range, w, h, speed, time, hit;
       var self = this;
 
