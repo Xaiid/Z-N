@@ -274,6 +274,9 @@ ZombieWorld.gameController = {
         if(player){
           player.dead = true;
         }else if(ZombieWorld.currentPlayer.Entity === e[0].obj){
+          var myPlayer = JSON.parse(localStorage.getItem('Player'));
+          myPlayer.dead = true;
+          localStorage.setItem(JSON.stringify(myPlayer));
           ZombieWorld.currentPlayer.dead = true;
         }
         e[0].obj.destroy();
