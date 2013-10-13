@@ -133,7 +133,7 @@ ZombieWorld.gameController = {
 
   loadTeam: function(){
     _.each(ZombieWorld.Players, function(player){
-      if(!player.zombieController && !player.Entity){
+      if(!player.zombieController && !player.Entity && !player.dead){
         player.Entity = Crafty.e('Player, ' + player.type)
         .attr({
           x: player.x,
@@ -150,7 +150,7 @@ ZombieWorld.gameController = {
   
   myPlayer: function(){
     var player = ZombieWorld.currentPlayer;
-    if(!player.zombieController){
+    if(!player.zombieController && !player.dead){
 
       Crafty.audio.play(player.type+'_init');
       player.Entity = Crafty.e('Player, ' + player.type)
