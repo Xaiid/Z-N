@@ -266,6 +266,12 @@ ZombieWorld.gameController = {
           this.y +=1;
         }
       }).onHit('Player', function(e){
+        var player = _.findWhere(ZombieWorld.Players, {Entity: e[0].obj});
+        if(player){
+          player.dead = true;
+        }else if(ZombieWorld.currentPlayer.Entity === e[0].obj){
+          ZombieWorld.currentPlayer.dead = true;
+        }
         e[0].obj.destroy();
       });
     });

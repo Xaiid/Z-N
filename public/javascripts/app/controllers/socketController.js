@@ -103,10 +103,10 @@ ZombieWorld.socketController = {
       }
 
       var left = _.find(ZombieWorld.Players, function(Player){ 
-        return Player.level === ZombieWorld.Level && !Player.zombieController;
+        return Player.level === ZombieWorld.Level && !Player.zombieController && !Player.dead;
       });
 
-      if(!ZombieWorld.currentPlayer.zombieController && ZombieWorld.currentPlayer.level === ZombieWorld.Level){
+      if(!ZombieWorld.currentPlayer.zombieController && ZombieWorld.currentPlayer.level === ZombieWorld.Level && !ZombieWorld.currentPlayer.dead){
         left = true;
       }
 
