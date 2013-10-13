@@ -128,7 +128,6 @@ ZombieWorld.socketController = {
 
     ZombieWorld.socket.on('Error', function(error){
       alert(error);
-      localStorage.clear();
       setTimeout(function(){
         window.location.assign('/');
       }, 300);

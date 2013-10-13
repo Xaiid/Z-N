@@ -122,6 +122,7 @@ ZombieWorld.gameController = {
   },
 
   removePlayer: function(player){
+    if(!ZombieWorld.Players[player]){ return false; }
     ZombieWorld.Players[player].Entity.destroy();
     delete ZombieWorld.Players[player];
   },
@@ -150,7 +151,8 @@ ZombieWorld.gameController = {
   
   myPlayer: function(){
     var player = ZombieWorld.currentPlayer;
-    if(!player.zombieController && !player.dead){
+    var dead = JSON.parse(localStorage.getItem('Player')).dead;
+    if(!player.zombieController && !dead){
 
       Crafty.audio.play(player.type+'_init');
       player.Entity = Crafty.e('Player, ' + player.type)
@@ -274,12 +276,14 @@ ZombieWorld.gameController = {
         if(player){
           player.dead = true;
           ZombieWorld.socket.emit('Kill player', player.username);
+          ZombieWorld.socket.emit('Next level', player.username, true);
         }else if(ZombieWorld.currentPlayer.Entity === e[0].obj){
           var myPlayer = JSON.parse(localStorage.getItem('Player'));
           myPlayer.dead = true;
           localStorage.setItem('Player', JSON.stringify(myPlayer));
           ZombieWorld.currentPlayer.dead = true;
-          ZombieWorld.socket.emit('Kill player', player.username);
+          ZombieWorld.socket.emit('Kill player', ZombieWorld.currentPlayer.username);
+          ZombieWorld.socket.emit('Next level', ZombieWorld.currentPlayer.username, true);
         }
         e[0].obj.destroy();
       });
