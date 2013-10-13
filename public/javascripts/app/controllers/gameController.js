@@ -113,10 +113,6 @@ ZombieWorld.gameController = {
         .animate("walk_up", 0,  3, 2)
         .animate("walk_down", 0, 0 , 2);
 
-
-      var totalPlayers = _.keys(ZombieWorld.Players).length;
-      var totalZombies = _.keys(ZombieWorld.Zombies).length;
-
       if(_.findWhere(ZombieWorld.Zombies, {from: player.username})){
         ZombieWorld.socket.emit('Load zombies', player.level);
       }else{
