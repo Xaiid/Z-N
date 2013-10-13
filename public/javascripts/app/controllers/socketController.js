@@ -120,7 +120,11 @@ ZombieWorld.socketController = {
         $.get('/configuration?level='+player.level).done(function(configuration){
           delete ZombieWorld.Land;
           ZombieWorld.Land = configuration;
-          Crafty.scene('Level'+ZombieWorld.Level);
+          if(ZombieWorld.Level < 4){
+            Crafty.scene('Level'+ZombieWorld.Level);
+          } else {
+            Crafty.scene('Victory');
+          }
         });
       }
 

@@ -25,6 +25,10 @@ ZombieWorld.gameController = {
 
         zombies3: Crafty.sprite(40, "/images/zombie_3.png", {
           zombie3: [0,0]
+        }),
+
+        car: Crafty.sprite(140, "images/car.png", {
+          car: [0,0]
         })
 
       };
